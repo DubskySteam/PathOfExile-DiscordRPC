@@ -1,0 +1,25 @@
+{
+  "name": "poe-rpc",
+  "version": "1.0.0",
+  "description": "A Discord RPC client for Path of Exile.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DubskySteam/PathOfExile-DiscordRPC.git"
+  },
+  "keywords": [
+    "poe",
+    "pathofexile",
+    "poe",
+    "discord"
+  ],
+  "author": "dubskysteam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DubskySteam/PathOfExile-DiscordRPC/issues"
+  },
+  "homepage": "https://github.com/DubskySteam/PathOfExile-DiscordRPC#readme"
+}
