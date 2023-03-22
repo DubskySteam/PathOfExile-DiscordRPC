@@ -4,7 +4,7 @@
   "description": "A Discord RPC client for Path of Exile.",
   "main": "main.js",
   "scripts": {
-    "rpc": "node main.js"
+    "start": "node main.js"
   },
   "repository": {
     "type": "git",
