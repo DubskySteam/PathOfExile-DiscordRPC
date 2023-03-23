@@ -1,6 +1,6 @@
 const DiscordRPC = require("discord-rpc");
 const { app, BrowserWindow, Menu, ipcMain } = require("electron");
-let { player } = require("./data");
+let { player } = require("./js/data");
 const path = require("path");
 const url = require("url");
 
