@@ -8,6 +8,15 @@ ___
 ### Functionality
 * Show your class, level and current area in your Discord Activity
 
+### How to setup
+1. Download the archive
+2. Extract it where ever you like
+3. Open the "data.json" in notepad etc.
+4. Replace the content of the path variable with a path to your client.txt
+5. Start the program
+
+> You can find the client.txt in your PoE installation directory in the "logs" folder.
+
 ### To-Be-Done
 Implement the PoE API to require the user only to enter the characters name to pull class and current level.
 The endpoints for that aren't public though and I need to contact PoE devs to register this application for it to work.
