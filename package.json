@@ -1,10 +1,15 @@
 {
-  "name": "poe-rpc",
+  "name": "pathofexile-discordrpc",
+  "productName": "pathofexile-discordrpc",
   "version": "1.0.0",
   "description": "A Discord RPC client for Path of Exile.",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
   },
   "repository": {
     "type": "git",
@@ -24,9 +29,15 @@
   "homepage": "https://github.com/DubskySteam/PathOfExile-DiscordRPC#readme",
   "dependencies": {
     "discord-rpc": "^4.0.1",
-    "poe-log-monitor": "^1.2.6"
+    "poe-log-monitor": "^1.2.6",
+    "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
-    "electron": "^23.1.4"
+    "@electron-forge/cli": "^6.0.5",
+    "@electron-forge/maker-deb": "^6.0.5",
+    "@electron-forge/maker-rpm": "^6.0.5",
+    "@electron-forge/maker-squirrel": "^6.0.5",
+    "@electron-forge/maker-zip": "^6.0.5",
+    "electron": "23.2.0"
   }
 }

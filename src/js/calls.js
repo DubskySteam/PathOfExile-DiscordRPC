@@ -1,0 +1,1 @@
+const endpoint = "https://api.pathofexile.com/";
