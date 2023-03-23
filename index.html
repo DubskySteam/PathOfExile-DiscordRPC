@@ -2,13 +2,18 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <script src="process.js"></script>
+    <script src="data.js"></script>
+    <script type="text/css" src="style.css"></script>
     <title>Path of Exile - RPC</title>
 </head>
 <body>
     <h1>DiscordRPC</h1>
-    <p id="char">Fetching</p>
+    <p id="charname">Fetching</p>
+    <p id="type">Fetching</p>
     <p id="level">Fetching</p>
     <p id="area">Fetching</p>
+    <input type="text" id="charName" placeholder="Character Name">
+    <input type="button" id="applyChange" onclick="applyChange()" value="Update">
 </body>
 </html>
