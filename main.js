@@ -33,10 +33,15 @@ app.whenReady().then(() => {
     largeImageKey: "poe_logo",
     largeImageText: "EU Server",
   });
+  win.webContents.send("charname", player.charname);
 });
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
+});
+
+ipcMain.on("newName", (event, newName) => {
+    player.charname = newName;
 });
 
 setInterval(() => {

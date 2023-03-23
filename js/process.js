@@ -10,10 +10,14 @@ ipcRenderer.on("data", (event, type, level, area) => {
   charArea.innerHTML = area;
 });
 
-function applyChange() {
-  player.charname = document.getElementById("charName").value;
+ipcRenderer.on("charname", (event, cName) => {
+  console.log("Received charname");
   let charname = document.getElementById("charname");
-  charname.innerHTML = player.charname;
+  charname.innerHTML = cName;
+});
 
-  ipcRenderer.send("change", "success");
+function applyChange() {
+  let charname = document.getElementById("charName").value;
+  ipcRenderer.send("newName", charname);
+  document.getElementById("charname").innerHTML = charname;
 }
