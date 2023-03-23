@@ -1,9 +1,7 @@
 const { ipcRenderer } = require("electron");
 
-ipcRenderer.on("data", (event, cname, type, level, area) => {
+ipcRenderer.on("data", (event, type, level, area) => {
   console.log("Received data");
-  let charname = document.getElementById("charname");
-  charname.innerHTML = cname;
   let charType = document.getElementById("type");
   charType.innerHTML = type;
   let charLevel = document.getElementById("level");
@@ -23,7 +21,9 @@ ipcRenderer.on("error", (event, err) => {
 });
 
 function applyChange() {
-  let charname = document.getElementById("charName").value;
-  ipcRenderer.send("newName", charname);
-  document.getElementById("charname").innerHTML = charname;
+  let level = document.getElementById("overLevel").value;
+  let type = document.getElementById("overType").value;
+  ipcRenderer.send("override", level, type);
+  document.getElementById("overLevel").innerHTML = level;
+  document.getElementById("overType").innerHTML = type;
 }

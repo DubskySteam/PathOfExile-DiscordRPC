@@ -8,6 +8,10 @@ ___
 ### Functionality
 * Show your class, level and current area in your Discord Activity
 
+### To-Be-Done
+Implement the PoE API to require the user only to enter the characters name to pull class and current level.
+The endpoints for that aren't public though and I need to contact PoE devs to register this application for it to work.
+
 ### How to use
 1. Download the pre-built binary or build from source yourself
 2. Open

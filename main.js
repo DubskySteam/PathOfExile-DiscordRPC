@@ -21,6 +21,7 @@ const createWindow = () => {
     },
   });
   win.loadURL(path.join(__dirname, "index.html"));
+  win.setMenu(null);
   //win.webContents.openDevTools();
 };
 
@@ -44,18 +45,20 @@ app.on("window-all-closed", () => {
 function readDataFile() {
   fs.readFile("data/data.json", "utf8", (err, data) => {
     if (err) {
-      win.webContents.send("data", "Error! Couldn't read data file");
+      win.webContents.send("error", "Error! Couldn't read data file");
       return;
     }
     let json = JSON.parse(data);
-    player.charname = json.charname;
+    player.type = json.type;
+    player.level = json.level;
+    player.area = json.area;
     console.log("Read data file");
-    console.log("Charname: " + player.charname);
   });
 }
 
-ipcMain.on("newName", (event, newName) => {
-  player.charname = newName;
+ipcMain.on("override", (event, level, type) => {
+  player.level = level;
+  player.type = type;
     fs.writeFile("data/data.json", JSON.stringify(player), (err) => {
       if (err) {
         win.webContents.send("error", "Error! Couldn't write to data file");
@@ -66,7 +69,7 @@ ipcMain.on("newName", (event, newName) => {
 });
 
 setInterval(() => {
-  win.webContents.send("data", player.charname, player.type, player.level, player.area);
+  win.webContents.send("data", player.type, player.level, player.area);
   rpc.setActivity({
     details: player.type + " [Lv." + player.level + "]",
     state: player.area,
