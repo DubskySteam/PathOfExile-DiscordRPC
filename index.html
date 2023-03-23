@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <script src="process.js"></script>
     <script src="data.js"></script>
     <script type="text/css" src="style.css"></script>
     <title>Path of Exile - RPC</title>
-</head>
-<body>
-    <h1>DiscordRPC</h1>
-    <p id="charname">Fetching</p>
-    <p id="type">Fetching</p>
-    <p id="level">Fetching</p>
-    <p id="area">Fetching</p>
-    <input type="text" id="charName" placeholder="Character Name">
-    <input type="button" id="applyChange" onclick="applyChange()" value="Update">
-</body>
+  </head>
+  <body>
+    <div id="container">
+      <h1>DiscordRPC</h1>
+      <p id="charname">Fetching</p>
+      <p id="type">Fetching</p>
+      <p id="level">Fetching</p>
+      <p id="area">Fetching</p>
+      <input type="text" id="charName" placeholder="Character Name" />
+      <input
+        type="button"
+        id="applyChange"
+        onclick="applyChange()"
+        value="Update"
+      />
+    </div>
+  </body>
 </html>
