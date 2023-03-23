@@ -1,15 +1,17 @@
 const DiscordRPC = require("discord-rpc");
 const { app, BrowserWindow, Menu, ipcMain, ipcRenderer } = require("electron");
+var PathOfExileLog = require("poe-log-monitor");
 let { player } = require("./js/data");
 const path = require("path");
 const url = require("url");
 const fs = require("fs");
+let win;
+let poelog = new PathOfExileLog({logfile: player.path});
 
 const rpc = new DiscordRPC.Client({
   transport: "ipc",
 });
 
-let win;
 
 const createWindow = () => {
   win = new BrowserWindow({
@@ -39,6 +41,13 @@ app.whenReady().then(() => {
 });
 
 app.on("window-all-closed", () => {
+  fs.writeFile("data/data.json", JSON.stringify(player), (err) => {
+    if (err) {
+      win.webContents.send("error", "Error! Couldn't write to data file");
+      return;
+    }
+    console.log("Wrote data file");
+  });
   if (process.platform !== "darwin") app.quit();
 });
 
@@ -52,6 +61,7 @@ function readDataFile() {
     player.type = json.type;
     player.level = json.level;
     player.area = json.area;
+    player.path = json.path;
     console.log("Read data file");
   });
 }
@@ -66,6 +76,14 @@ ipcMain.on("override", (event, level, type) => {
       }
       console.log("Wrote data file");
     });
+});
+
+poelog.on("area", (area) => {
+  player.area = area.name;
+});
+
+poelog.on("level", (level) => {
+  player.level = area.level;
 });
 
 setInterval(() => {

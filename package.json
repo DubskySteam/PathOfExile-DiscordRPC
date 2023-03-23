@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/DubskySteam/PathOfExile-DiscordRPC#readme",
   "dependencies": {
-    "discord-rpc": "^4.0.1"
+    "discord-rpc": "^4.0.1",
+    "poe-log-monitor": "^1.2.6"
   },
   "devDependencies": {
     "electron": "^23.1.4"
