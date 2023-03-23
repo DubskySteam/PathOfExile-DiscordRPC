@@ -35,7 +35,6 @@ app.whenReady().then(() => {
     largeImageText: "EU Server",
   });
   readDataFile();
-  win.webContents.send("charname", player.charname);
 });
 
 app.on("window-all-closed", () => {
@@ -57,10 +56,17 @@ function readDataFile() {
 
 ipcMain.on("newName", (event, newName) => {
   player.charname = newName;
+    fs.writeFile("data/data.json", JSON.stringify(player), (err) => {
+      if (err) {
+        win.webContents.send("error", "Error! Couldn't write to data file");
+        return;
+      }
+      console.log("Wrote data file");
+    });
 });
 
 setInterval(() => {
-  win.webContents.send("data", player.type, player.level, player.area);
+  win.webContents.send("data", player.charname, player.type, player.level, player.area);
   rpc.setActivity({
     details: player.type + " [Lv." + player.level + "]",
     state: player.area,

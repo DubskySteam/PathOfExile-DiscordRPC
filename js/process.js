@@ -1,7 +1,9 @@
 const { ipcRenderer } = require("electron");
 
-ipcRenderer.on("data", (event, type, level, area) => {
+ipcRenderer.on("data", (event, cname, type, level, area) => {
   console.log("Received data");
+  let charname = document.getElementById("charname");
+  charname.innerHTML = cname;
   let charType = document.getElementById("type");
   charType.innerHTML = type;
   let charLevel = document.getElementById("level");
