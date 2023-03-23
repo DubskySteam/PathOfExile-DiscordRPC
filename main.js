@@ -3,6 +3,7 @@ const { app, BrowserWindow, Menu, ipcMain, ipcRenderer } = require("electron");
 let { player } = require("./js/data");
 const path = require("path");
 const url = require("url");
+const fs = require("fs");
 
 const rpc = new DiscordRPC.Client({
   transport: "ipc",
@@ -33,6 +34,7 @@ app.whenReady().then(() => {
     largeImageKey: "poe_logo",
     largeImageText: "EU Server",
   });
+  readDataFile();
   win.webContents.send("charname", player.charname);
 });
 
@@ -40,16 +42,29 @@ app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
 });
 
+function readDataFile() {
+  fs.readFile("data/data.json", "utf8", (err, data) => {
+    if (err) {
+      win.webContents.send("data", "Error! Couldn't read data file");
+      return;
+    }
+    let json = JSON.parse(data);
+    player.charname = json.charname;
+    console.log("Read data file");
+    console.log("Charname: " + player.charname);
+  });
+}
+
 ipcMain.on("newName", (event, newName) => {
-    player.charname = newName;
+  player.charname = newName;
 });
 
 setInterval(() => {
-    win.webContents.send("data", player.type, player.level, player.area);
-    rpc.setActivity({
-        details: player.type + " [Lv." + player.level + "]",
-        state: player.area,
-    });
+  win.webContents.send("data", player.type, player.level, player.area);
+  rpc.setActivity({
+    details: player.type + " [Lv." + player.level + "]",
+    state: player.area,
+  });
 }, 2 * 1000);
 
 rpc.login({

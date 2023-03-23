@@ -16,6 +16,10 @@ ipcRenderer.on("charname", (event, cName) => {
   charname.innerHTML = cName;
 });
 
+ipcRenderer.on("error", (event, err) => {
+  alert(err);
+});
+
 function applyChange() {
   let charname = document.getElementById("charName").value;
   ipcRenderer.send("newName", charname);
