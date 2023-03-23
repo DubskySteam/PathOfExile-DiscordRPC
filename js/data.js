@@ -1,8 +1,8 @@
 let player = {
-  level: 96,
-  type: "Juggernaut",
-  charname: "AssemblerEnjoyer",
-  area: "T16 Map",
+  level: 0,
+  type: "Unknown",
+  charname: "",
+  area: "Unknown",
 };
 
 module.exports = { player };
