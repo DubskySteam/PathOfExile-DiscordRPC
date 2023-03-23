@@ -1,0 +1,30 @@
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: "Bahnschrift", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 720px;
+  padding: 0 20px;
+}
+
+
+
+input {
+  background-color: #000000;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-family: "Bahnschrift", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+}
