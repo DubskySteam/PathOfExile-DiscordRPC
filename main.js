@@ -1,5 +1,5 @@
 const DiscordRPC = require("discord-rpc");
-const { app, BrowserWindow, Menu, ipcMain } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain, ipcRenderer } = require("electron");
 let { player } = require("./js/data");
 const path = require("path");
 const url = require("url");
@@ -39,13 +39,13 @@ app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
 });
 
-ipcMain.on("data", (event, type, level, area) => {
-  console.log("Received data");
-  rpc.setActivity({
-    details: type + " [Lv." + level + "]",
-    state: area,
-  });
-});
+setInterval(() => {
+    win.webContents.send("data", player.type, player.level, player.area);
+    rpc.setActivity({
+        details: player.type + " [Lv." + player.level + "]",
+        state: player.area,
+    });
+}, 2 * 1000);
 
 rpc.login({
   clientId: "1087901895970005114",

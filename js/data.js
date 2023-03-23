@@ -4,3 +4,5 @@ let player = {
   charname: "AssemblerEnjoyer",
   area: "T16 Map",
 };
+
+module.exports = { player };

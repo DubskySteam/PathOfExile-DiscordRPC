@@ -1,9 +1,14 @@
 const { ipcRenderer } = require("electron");
 
-setInterval(() => {
-  ipcRenderer.send("data", player.type, player.level, player.area);
-  console.log("Sent data");
-}, 2 * 1000);
+ipcRenderer.on("data", (event, type, level, area) => {
+  console.log("Received data");
+  let charType = document.getElementById("type");
+  charType.innerHTML = type;
+  let charLevel = document.getElementById("level");
+  charLevel.innerHTML = level;
+  let charArea = document.getElementById("area");
+  charArea.innerHTML = area;
+});
 
 function applyChange() {
   player.charname = document.getElementById("charName").value;
