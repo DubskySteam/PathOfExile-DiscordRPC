@@ -3,11 +3,11 @@ const { ipcRenderer } = require("electron");
 ipcRenderer.on("data", (event, type, level, area) => {
   console.log("Received data");
   let charType = document.getElementById("type");
-  charType.innerHTML = type;
+  charType.innerHTML = "Class: "+type;
   let charLevel = document.getElementById("level");
-  charLevel.innerHTML = level;
+  charLevel.innerHTML = "Lv."+level;
   let charArea = document.getElementById("area");
-  charArea.innerHTML = area;
+  charArea.innerHTML = "Area: "+area;
 });
 
 ipcRenderer.on("charname", (event, cName) => {
@@ -24,6 +24,6 @@ function applyChange() {
   let level = document.getElementById("overLevel").value;
   let type = document.getElementById("overType").value;
   ipcRenderer.send("override", level, type);
-  document.getElementById("overLevel").innerHTML = level;
-  document.getElementById("overType").innerHTML = type;
+  document.getElementById("overLevel").innerHTML = "Lv."+level;
+  document.getElementById("overType").innerHTML = "Class: "+type;
 }
