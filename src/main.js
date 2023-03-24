@@ -38,7 +38,7 @@ app.whenReady().then(() => {
     largeImageKey: "poe_logo",
     largeImageText: "EU Server",
   });
-  //readDataFile();
+  readDataFile();
 });
 
 app.on("window-all-closed", () => {
