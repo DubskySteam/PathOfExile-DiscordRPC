@@ -1,11 +1,13 @@
 const DiscordRPC = require("discord-rpc");
-const { app, BrowserWindow, Menu, ipcMain, ipcRenderer } = require("electron");
+var os = require('os');
+const { app, BrowserWindow, Menu, ipcMain } = require("electron");
 var PathOfExileLog = require("poe-log-monitor");
 let { player } = require("./js/data");
 const path = require("path");
 const url = require("url");
 const fs = require("fs");
 let win;
+let winUser = os.userInfo().username;
 let poelog = new PathOfExileLog({logfile: player.path});
 
 const rpc = new DiscordRPC.Client({
@@ -41,7 +43,7 @@ app.whenReady().then(() => {
 });
 
 app.on("window-all-closed", () => {
-  fs.writeFile("data/data.json", JSON.stringify(player), (err) => {
+  fs.writeFile("C:/Users/" + winUser + "/Documents/PoE-RPC/data.json", JSON.stringify(player), (err) => {
     if (err) {
       win.webContents.send("error", "Error! Couldn't write to data file");
       return;
@@ -52,7 +54,7 @@ app.on("window-all-closed", () => {
 });
 
 function readDataFile() {
-  fs.readFile("data/data.json", "utf8", (err, data) => {
+  fs.readFile("C:/Users/" + winUser + "/Documents/PoE-RPC/data.json", "utf8", (err, data) => {
     if (err) {
       win.webContents.send("error", "Error! Couldn't read data file");
       return;
@@ -69,7 +71,7 @@ function readDataFile() {
 ipcMain.on("override", (event, level, type) => {
   player.level = level;
   player.type = type;
-    fs.writeFile("data/data.json", JSON.stringify(player), (err) => {
+    fs.writeFile("C:/Users" + winUser + "/Documents/PoE-RPC/data.json", JSON.stringify(player), (err) => {
       if (err) {
         win.webContents.send("error", "Error! Couldn't write to data file");
         return;
