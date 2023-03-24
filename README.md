@@ -14,7 +14,7 @@ ___
 3. Create a folder called "PoE-RPC" in "C:\Users\%username%\Documents\"
 4. Copy "data.json" into it
 5. Open "data.json" with any editor.
-6. Replace the content of the path variable with a path to your client.txt
+6. Replace the content of the "clienttxt" variable with a path to your client.txt
 7. Run the program
 8. On the very first start, enter your level and class name and hit "Override".
 
