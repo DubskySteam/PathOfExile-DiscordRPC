@@ -1,7 +1,7 @@
 {
   "name": "pathofexile-discordrpc",
   "productName": "pathofexile-discordrpc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Discord RPC client for Path of Exile.",
   "main": "src/main.js",
   "scripts": {
