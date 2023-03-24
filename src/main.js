@@ -1,5 +1,4 @@
 const DiscordRPC = require("discord-rpc");
-var os = require('os');
 const { app, BrowserWindow, Menu, ipcMain } = require("electron");
 var PathOfExileLog = require("poe-log-monitor");
 let { player } = require("./js/data");
@@ -7,13 +6,13 @@ const path = require("path");
 const url = require("url");
 const fs = require("fs");
 let win;
-let winUser = os.userInfo().username;
-let poelog = new PathOfExileLog({logfile: player.path});
+var os = require("os");
+var osUser = os.userInfo().username;
+player.data = "C:/Users/" + osUser + "/Documents/PoE-RPC/data.json";
 
 const rpc = new DiscordRPC.Client({
   transport: "ipc",
 });
-
 
 const createWindow = () => {
   win = new BrowserWindow({
@@ -39,11 +38,11 @@ app.whenReady().then(() => {
     largeImageKey: "poe_logo",
     largeImageText: "EU Server",
   });
-  readDataFile();
+  //readDataFile();
 });
 
 app.on("window-all-closed", () => {
-  fs.writeFile("C:/Users/" + winUser + "/Documents/PoE-RPC/data.json", JSON.stringify(player), (err) => {
+  fs.writeFile(player.data, JSON.stringify(player), (err) => {
     if (err) {
       win.webContents.send("error", "Error! Couldn't write to data file");
       return;
@@ -54,7 +53,7 @@ app.on("window-all-closed", () => {
 });
 
 function readDataFile() {
-  fs.readFile("C:/Users/" + winUser + "/Documents/PoE-RPC/data.json", "utf8", (err, data) => {
+  fs.readFile(player.data, "utf8", (err, data) => {
     if (err) {
       win.webContents.send("error", "Error! Couldn't read data file");
       return;
@@ -63,29 +62,34 @@ function readDataFile() {
     player.type = json.type;
     player.level = json.level;
     player.area = json.area;
-    player.path = json.path;
+    player.clienttxt = json.clienttxt;
+    ready=true;
     console.log("Read data file");
-  });
+
+    console.log(player.clienttxt)
+    let poelog = new PathOfExileLog({ logfile: player.clienttxt });
+
+    poelog.on("area", (area) => {
+      player.area = area.name;
+      console.log(area.name);
+    });
+
+    poelog.on("level", (level) => {
+      player.level = area.level;
+    });
+});
 }
 
 ipcMain.on("override", (event, level, type) => {
   player.level = level;
   player.type = type;
-    fs.writeFile("C:/Users" + winUser + "/Documents/PoE-RPC/data.json", JSON.stringify(player), (err) => {
+    fs.writeFile(player.data, JSON.stringify(player), (err) => {
       if (err) {
         win.webContents.send("error", "Error! Couldn't write to data file");
         return;
       }
       console.log("Wrote data file");
     });
-});
-
-poelog.on("area", (area) => {
-  player.area = area.name;
-});
-
-poelog.on("level", (level) => {
-  player.level = area.level;
 });
 
 setInterval(() => {
