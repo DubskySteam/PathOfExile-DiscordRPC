@@ -1,1 +1,6 @@
-{"path":"E:/SteamLibrary/steamapps/common/Path of Exile/logs/Client.txt","level":"1","type":"Unknown","area":"Unknown"}
+{
+    "path":"PUT_YOUR_PATH_HERE",
+    "level":"1",
+    "type":"Unknown",
+    "area":"Unknown"
+}
