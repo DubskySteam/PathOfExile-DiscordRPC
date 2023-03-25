@@ -9,22 +9,21 @@ body {
   text-align: center;
 }
 
-.container {
-  margin: 0 auto;
-  max-width: 720px;
-  padding: 0 20px;
-}
-
-
-
 input {
   background-color: #000000;
   border: 1px solid #ffffff;
   color: #ffffff;
   font-family: "Bahnschrift", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 15px;
   margin: 0;
   padding: 10px;
   text-align: center;
+  border-radius: 5px;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 720px;
+  padding: 0 20px;
 }

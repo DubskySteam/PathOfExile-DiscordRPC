@@ -5,7 +5,7 @@ ipcRenderer.on("data", (event, type, level, area) => {
   let charType = document.getElementById("type");
   charType.innerHTML = "Class: "+type;
   let charLevel = document.getElementById("level");
-  charLevel.innerHTML = "Lv."+level;
+  charLevel.innerHTML = "Level: "+level;
   let charArea = document.getElementById("area");
   charArea.innerHTML = "Area: "+area;
 });

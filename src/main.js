@@ -18,12 +18,13 @@ const getOSuser = () => {
 
 const createWindow = () => {
   win = new BrowserWindow({
-    width: 720,
-    height: 480,
+    width: 500,
+    height: 280,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
     },
+    resizable: false,
   });
   win.loadURL(path.join(__dirname, "index.html"));
   win.setMenu(null);
