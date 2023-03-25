@@ -1,6 +1,6 @@
 body {
   background-color: #252422;
-  color: #ff0054;
+  color: #edf2f4;
   font-family: "Bahnschrift", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
@@ -11,7 +11,7 @@ body {
 
 input {
   background-color: #f5f5f5;
-  border: 0px solid #ff0054;
+  border: 0px solid #edf2f4;
   color: #000000;
   font-family: "Bahnschrift", Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -32,7 +32,7 @@ input {
 }
 
 .server {
-  border: 1px solid #ff0054;
+  border: 1px solid #edf2f4;
   padding: 5px;
   border-radius: 5px;
   width: 50px;
