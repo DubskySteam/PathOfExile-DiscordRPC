@@ -1,5 +1,5 @@
 body {
-  background-color: #403d39;
+  background-color: #252422;
   color: #ff0054;
   font-family: "Bahnschrift", Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -12,7 +12,6 @@ body {
 input {
   background-color: #f5f5f5;
   border: 0px solid #ff0054;
-  box-shadow: 0 0 8px #ff0054;
   color: #000000;
   font-family: "Bahnschrift", Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -27,4 +26,18 @@ input {
   margin: 0 auto;
   max-width: 720px;
   padding: 0 20px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.server {
+  border: 1px solid #ff0054;
+  padding: 5px;
+  border-radius: 5px;
+  width: 50px;
+  position: absolute;
+  margin: 0 auto;
+  left: 15px;
+  top: 15px;
 }
